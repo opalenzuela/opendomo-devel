@@ -1,0 +1,5 @@
+DESCRIPTION="Developer tools"
+REQUIRED_BYTES="1000000"
+SCREENSHOTS="https://github.com/opalenzuela/opendomo-devel/screenshot1.png"
+SCHEME="FEFABA FFFFFF"
+ICON="oddevel.png"
