@@ -7,4 +7,4 @@ OpenDomo-devel provides useful development tools for [OpenDomo](http://www.opend
 * **Translation tools** to adapt the project for any language.
 * **Package creator.** 
 
-More features will be discussed in the Issues section of this project.
+More features will be discussed in the [Issues section](https://github.com/opalenzuela/opendomo-devel/issues) of this project.
