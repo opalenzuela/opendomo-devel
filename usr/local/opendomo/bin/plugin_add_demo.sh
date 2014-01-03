@@ -5,7 +5,7 @@ then
     echo "usage: $0 pluginID"
     echo "usage: $0 /path/to/plugin.file"
     echo
-    exit 0
+    exit 1
 fi
 
 if test -f "$1"
@@ -17,6 +17,11 @@ else
 fi
 
 REPOFILE="/var/opendomo/tmp/repo.lst"
+if ! test -f "$REPOFILE"
+then
+	echo "#ERROR $REPOFILE does not exist. Launch managePlugins.sh and try again"
+	exit 2
+fi
 DEPS=`grep ^$1 $REPOFILE| cut -f4 -d';' |sort |head -n1`
 URLFILE=`grep ^$1 $REPOFILE| cut -f2 -d';' |sort |head -n1`
 PROGRESS="/var/opendomo/run/$PKGID.progress"
