@@ -9,6 +9,7 @@ fi
 GITUSER="$1"
 GITPROJ="$2"
 TMPDIR="/var/opendomo/tmp"
+LOGDIR="/var/opendomo/log"
 URLPROJ="https://github.com/$GITUSER/$GITPROJ"
 if wget -q "$URLPROJ" -O - 2>/dev/null
 then
@@ -25,7 +26,16 @@ then
 	cd $TMPDIR
 	tar -zxvf $GITPROJ.tar.gz
 	cd $GITUSER-$GITPROJ-*
-	. ./mkpkg.sh
+	. ./mkpkg.sh >> $LOGDIR/$GITPROJ.log
+	TGZFILE=`ls *.tar.gz`
 	echo "# Installing $PKGID"
-	/usr/local/bin/plugin_add.sh $PKGID
+	if test -z "$TGZFILE"
+	then
+		echo "#ERROR Tar.gz file was not created"
+		exit 3
+	else
+		TGZFILE="`pwd`/$TGZFILE"
+		cd /
+		tar -zxvf $TGZFILE
+	fi
 fi
