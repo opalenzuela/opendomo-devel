@@ -54,5 +54,5 @@ echo "75" > $PROGRESS
 
 cd /
 echo $LFILE | grep ".tar.gz" - && /bin/tar -zxvf $LFILE > /var/opendomo/log/$PKGID.files
-echo $LFILE | grep ".zip" - && /usr/local/bin/unzip $LFILE > /var/opendomo/log/$PKGID.files
+echo $LFILE | grep ".zip" - && /usr/local/bin/unzip -o $LFILE > /var/opendomo/log/$PKGID.files
 rm $PROGRESS
