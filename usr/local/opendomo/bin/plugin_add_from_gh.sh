@@ -11,7 +11,7 @@ GITPROJ="$2"
 TMPDIR="/var/opendomo/tmp"
 LOGDIR="/var/opendomo/log"
 URLPROJ="https://github.com/$GITUSER/$GITPROJ"
-if wget -q "$URLPROJ" -O - 2>/dev/null
+if wget -q "$URLPROJ" 2>/dev/null
 then
 	URLFILE="https://github.com/$GITUSER/$GITPROJ/tarball/master"
 	echo "# Retrieving file $URLFILE"
@@ -36,6 +36,6 @@ then
 	else
 		TGZFILE="`pwd`/$TGZFILE"
 		cd /
-		tar -zxvf $TGZFILE
+		tar -zxvf  --no-overwrite-dir $TGZFILE
 	fi
 fi
