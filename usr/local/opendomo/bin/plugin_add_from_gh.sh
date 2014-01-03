@@ -36,6 +36,6 @@ then
 	else
 		TGZFILE="`pwd`/$TGZFILE"
 		cd /
-		tar -zxvf  --no-overwrite-dir $TGZFILE
+		tar  --no-overwrite-dir -zxvf $TGZFILE
 	fi
 fi
