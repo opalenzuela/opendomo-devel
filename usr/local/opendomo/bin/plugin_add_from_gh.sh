@@ -24,15 +24,31 @@ rm -fr $TMPDIR/$GITUSER-$GITPROJ-*
 if wget -q "$URLFILE" -O $TMPDIR/$GITPROJ.tar.gz
 then
 	cd $TMPDIR
-	tar -zxvf $GITPROJ.tar.gz
+	tar -zxf $GITPROJ.tar.gz
+	if ! test -d usr
+	then
+		echo "#ERROR usr directory is missing!"
+		exit 3
+	fi
+	if ! test -d var
+	then
+		echo "#ERROR var directory is missing!"
+		exit 4
+	fi	
+	
 	cd $GITUSER-$GITPROJ-*
 	. ./mkpkg.sh >> $LOGDIR/$GITPROJ.log
+	if test -z "$PKGID"
+	then
+		echo "#ERROR PKGID is not specified!"
+		exit 5
+	fi
 	TGZFILE=`ls *.tar.gz`
 	echo "# Installing $PKGID"
 	if test -z "$TGZFILE"
 	then
 		echo "#ERROR Tar.gz file was not created"
-		exit 3
+		exit 6
 	else
 		TGZFILE="`pwd`/$TGZFILE"
 		cd /
