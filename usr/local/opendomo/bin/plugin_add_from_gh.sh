@@ -30,6 +30,7 @@ if wget -q "$URLFILE" -O $TMPDIR/$GITPROJ.tar.gz
 then
 	cd $TMPDIR
 	tar -zxf $GITPROJ.tar.gz
+	cd $GITUSER-$GITPROJ-*
 
 	if ! test -f mkpkg.sh
 	then
@@ -46,7 +47,7 @@ then
 		echo "#WARN var directory is missing!"
 	fi	
 	
-	cd $GITUSER-$GITPROJ-*
+
 	. ./mkpkg.sh >> $LOGDIR/$GITPROJ.log
 	if test -z "$PKGID"
 	then
