@@ -30,15 +30,20 @@ if wget -q "$URLFILE" -O $TMPDIR/$GITPROJ.tar.gz
 then
 	cd $TMPDIR
 	tar -zxf $GITPROJ.tar.gz
+
+	if ! test -f mkpkg.sh
+	then
+		echo "#ERROR mkpkg.sh script is missing!"
+		exit 3
+	fi
 	if ! test -d usr
 	then
 		echo "#ERROR usr directory is missing!"
-		exit 3
+		exit 4
 	fi
 	if ! test -d var
 	then
-		echo "#ERROR var directory is missing!"
-		exit 4
+		echo "#WARN var directory is missing!"
 	fi	
 	
 	cd $GITUSER-$GITPROJ-*
