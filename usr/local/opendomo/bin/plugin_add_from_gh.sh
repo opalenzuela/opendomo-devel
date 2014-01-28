@@ -16,7 +16,7 @@ LOGDIR="/var/opendomo/log"
 URLPROJ="https://github.com/$GITUSER/$GITPROJ"
 
 cd "$TMPDIR"
-if wget --no-check-certificate -q "$URLPROJ" 2>/dev/null
+if wget --no-check-certificate -qO- "$URLPROJ" &>/dev/null
 then
 	URLFILE="https://github.com/$GITUSER/$GITPROJ/tarball/master"
 	echo "# Retrieving file $URLFILE"
@@ -26,7 +26,7 @@ else
 fi
 
 rm -fr $TMPDIR/$GITUSER-$GITPROJ-*
-if wget -q "$URLFILE" -O $TMPDIR/$GITPROJ.tar.gz
+if wget --no-check-certificate -q "$URLFILE" -O $TMPDIR/$GITPROJ.tar.gz
 then
 	cd $TMPDIR
 	tar -zxf $GITPROJ.tar.gz
