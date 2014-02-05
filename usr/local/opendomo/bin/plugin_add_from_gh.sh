@@ -65,4 +65,5 @@ then
 		cd /
 		tar  --no-overwrite-dir -zxvf $TGZFILE
 	fi
+	createwrappers.sh
 fi
