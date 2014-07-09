@@ -1,4 +1,7 @@
 #!/bin/sh
+#desc:Add plugin from GitHub
+#package:oddevel
+#type:local
 
 # Copyright(c) 2014 OpenDomo Services SL. Licensed under GPL v3 or later
 
@@ -36,7 +39,20 @@ then
 	then
 		echo "#ERROR mkpkg.sh script is missing!"
 		exit 3
+	else
+		if ! test -x mkpkg.sh
+		then
+			echo "#ERROR mkpkg.sh script doesn't have execution privileges!"
+			exit 3
+		fi
 	fi
+
+	if ! test -f build.bat
+	then
+		echo "#ERROR build.bat script is missing!"
+		exit 3
+	fi
+	
 	if ! test -d usr
 	then
 		echo "#ERROR usr directory is missing!"
@@ -63,7 +79,7 @@ then
 	else
 		TGZFILE="`pwd`/$TGZFILE"
 		cd /
-		tar  --no-overwrite-dir -zxvf $TGZFILE
+		tar  --no-overwrite-dir -zxvf $TGZFILE  >> $LOGDIR/$GITPROJ.log 
 	fi
 	createwrappers.sh
 fi
