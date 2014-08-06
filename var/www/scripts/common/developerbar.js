@@ -10,3 +10,33 @@ jQuery(function($) {
 	$("#notify").css("display","inline-block").css("background","url(/images/notify.png) no-repeat scroll center center").css("height","32px").css("width","32px");
 	$("#translate").css("display","inline-block").css("background","url(/images/translate.png) no-repeat scroll center center").css("height","32px").css("width","32px");
 });
+
+function putFlags(){
+	untrans = document.getElementsByClassName("untrans");
+	for (i=0;i<untrans.length;i++) {
+		var transbutton = document.createElement("b");
+		transbutton.innerHTML="<img src='/images/trans.png' alt='translate'/>";
+		transbutton.onmousedown=function() {
+			translateMe(this.parentNode);
+			return false;
+		}
+		untrans[i].appendChild(transbutton);
+	}
+}
+
+function translateMe(tag){
+	var text=tag.firstChild.data;
+	var id=tag.id;
+	var lang=tag.lang;
+	var url="http://cloud.opendomo.com/babel/trans.php";
+	var script="";
+	while (tag.parentNode.tagName!="BODY" && tag.parentNode) {
+		tag = tag.parentNode;
+		if (tag.tagName=="UL") script = tag.id + ".sh";
+	}
+	openPopup(url+"?data="+text+"&id="+id+"&lang="+lang+"&script="+script);
+}
+
+function notifyProblem(){
+	openPopup('http://www.opendomo.com/wiki/index.php?action=edit&title=Discusión:'+basename(location.pathname));
+}
