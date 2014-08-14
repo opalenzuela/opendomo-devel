@@ -35,8 +35,14 @@ fi
 # If GIT is installed, it's our first option
 if test -x /usr/bin/git
 then
-	git clone $CLONEPROJ
-	cd $GITPROJ
+	if test -d $GITPROJ
+	then
+		cd $GITPROJ
+		git pull
+	else
+		git clone $CLONEPROJ
+		cd $GITPROJ
+	fi
 else
 	rm -fr $TMPDIR/$GITUSER-$GITPROJ-*
 	if ! wget --no-check-certificate -q "$URLFILE" -O $TMPDIR/$GITPROJ.tar.gz
