@@ -35,11 +35,13 @@ then
 	tar -zxf $GITPROJ.tar.gz
 	cd $GITUSER-$GITPROJ-*
 
-	echo "##########################################################################"
-	echo "##   WARNING: you are installing a plugin from te development branch.   ##"
-	echo "##   This means that  the code might be unstable,  so it shouldn't be   ##" 
-	echo "##   used in production environments. Use it AT YOUR OWN RISK!          ##"
-	echo "##########################################################################"
+	echo
+	echo "   ##########################################################################"
+	echo "   ##   WARNING: you are installing a plugin from te development branch.   ##"
+	echo "   ##   This means that  the code might be unstable,  so it shouldn't be   ##" 
+	echo "   ##   used in production environments. Use it AT YOUR OWN RISK!          ##"
+	echo "   ##########################################################################"
+	echo 
 	
 	if ! test -f mkpkg.sh
 	then
@@ -76,16 +78,25 @@ then
 		echo "#ERROR PKGID is not specified!"
 		exit 5
 	fi
+	
 	TGZFILE=`ls *.tar.gz`
-	echo "# Installing $PKGID"
+	echo "# Installing $PKGID ... "
 	if test -z "$TGZFILE"
 	then
 		echo "#ERROR Plugin tar.gz file was not created"
 		exit 6
-	else
-		TGZFILE="`pwd`/$TGZFILE"
-		cd /
-		tar  --no-overwrite-dir -zxvf $TGZFILE  >> $LOGDIR/$GITPROJ.log 
 	fi
-	createwrappers.sh
+
+	TGZFILE="`pwd`/$TGZFILE"
+	cd /
+	if tar  --no-overwrite-dir -zxvf $TGZFILE  >> $LOGDIR/$GITPROJ.log 
+	then
+		
+		createwrappers.sh
+		
+		echo "# Plugin $PKGID installed successfully"
+	else
+		echo "#ERROR decompressing file"
+		exit 7
+	fi
 fi
