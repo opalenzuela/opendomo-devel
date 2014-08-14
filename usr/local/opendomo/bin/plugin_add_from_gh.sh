@@ -14,10 +14,13 @@ fi
 
 GITUSER="$1"
 GITPROJ="$2"
-TMPDIR="/var/opendomo/tmp"
+
 LOGDIR="/var/opendomo/log"
 URLPROJ="https://github.com/$GITUSER/$GITPROJ"
 
+# First we go to the home directory
+cd 
+TMPDIR=`pwd`
 cd "$TMPDIR"
 if wget --no-check-certificate -qO- "$URLPROJ" &>/dev/null
 then
@@ -37,7 +40,7 @@ then
 
 	echo
 	echo "   ##########################################################################"
-	echo "   ##   WARNING: you are installing a plugin from te development branch.   ##"
+	echo "   ##   WARNING: you are installing a plugin from the development branch.  ##"
 	echo "   ##   This means that  the code might be unstable,  so it shouldn't be   ##" 
 	echo "   ##   used in production environments. Use it AT YOUR OWN RISK!          ##"
 	echo "   ##########################################################################"
