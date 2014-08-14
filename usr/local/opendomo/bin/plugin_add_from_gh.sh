@@ -35,6 +35,12 @@ then
 	tar -zxf $GITPROJ.tar.gz
 	cd $GITUSER-$GITPROJ-*
 
+	echo "##########################################################################"
+	echo "##   WARNING: you are installing a plugin from te development branch.   ##"
+	echo "##   This means that  the code might be unstable,  so it shouldn't be   ##" 
+	echo "##   used in production environments. Use it AT YOUR OWN RISK!          ##"
+	echo "##########################################################################"
+	
 	if ! test -f mkpkg.sh
 	then
 		echo "#ERROR mkpkg.sh script is missing!"
@@ -61,9 +67,9 @@ then
 	if ! test -d var
 	then
 		echo "#WARN var directory is missing!"
+		echo " This is not a compulsory directory if the plugin doesn't have styles, images or interface modifications"
 	fi	
 	
-
 	. ./mkpkg.sh >> $LOGDIR/$GITPROJ.log
 	if test -z "$PKGID"
 	then
@@ -74,7 +80,7 @@ then
 	echo "# Installing $PKGID"
 	if test -z "$TGZFILE"
 	then
-		echo "#ERROR Tar.gz file was not created"
+		echo "#ERROR Plugin tar.gz file was not created"
 		exit 6
 	else
 		TGZFILE="`pwd`/$TGZFILE"
