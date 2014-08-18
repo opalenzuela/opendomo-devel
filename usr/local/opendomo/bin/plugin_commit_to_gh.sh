@@ -27,6 +27,9 @@ cd "$TMPDIR/$GITPROJ"
 # Last: commit changes 
 if test -x /usr/bin/git
 then
+	echo "Please enter a description for the changes: "
+	read description
+	git commit -a -m "$description"
 	git push
 else
 	echo "#ERROR GIT is not installed"

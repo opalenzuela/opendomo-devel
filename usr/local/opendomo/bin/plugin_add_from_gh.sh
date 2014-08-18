@@ -44,6 +44,7 @@ then
 		cd $GITPROJ
 	fi
 else
+	echo "Using direct download. Install git if you want to commit changes"
 	rm -fr $TMPDIR/$GITUSER-$GITPROJ-*
 	if ! wget --no-check-certificate -q "$URLFILE" -O $TMPDIR/$GITPROJ.tar.gz
 	then
