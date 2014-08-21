@@ -12,6 +12,7 @@ then
 	echo "	project	Project	text	$2" 
 else
 	echo "#LOADING Installing plugin"
+	echo
 	if /usr/local/opendomo/bin/plugin_add_from_gh.sh $1 $2 >/dev/null
 	then
 		echo "#INFO Plugin [$2] installed"
