@@ -114,7 +114,7 @@ fi
 TGZFILE="`pwd`/$TGZFILE"
 echo > $TMPDIR/$GITPROJ.files 
 cd /
-if tar  --no-overwrite-dir -zxvf $TGZFILE  >> $TMPDIR/$GITPROJ.files 
+if tar  --no-overwrite-dir -zxvf $TGZFILE  >> /var/opendomo/plugins/$PKGID.files 
 then
 	
 	createwrappers.sh
