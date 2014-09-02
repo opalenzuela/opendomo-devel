@@ -117,6 +117,7 @@ cd /
 if tar  --no-overwrite-dir -zxvf $TGZFILE  >> /var/opendomo/plugins/$PKGID.files 
 then
 	echo "99999999" > /var/openodmo/plugins/$PKGID.version
+	manage_conf.sh copy
 	createwrappers.sh
 
 	echo "# Plugin $PKGID installed successfully"
