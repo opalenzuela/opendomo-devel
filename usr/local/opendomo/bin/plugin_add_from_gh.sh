@@ -116,9 +116,9 @@ echo > $TMPDIR/$GITPROJ.files
 cd /
 if tar  --no-overwrite-dir -zxvf $TGZFILE  >> /var/opendomo/plugins/$PKGID.files 
 then
-	
+	echo "99999999" > /var/openodmo/plugins/$PKGID.version
 	createwrappers.sh
-	
+
 	echo "# Plugin $PKGID installed successfully"
 else
 	echo "#ERROR decompressing file"
