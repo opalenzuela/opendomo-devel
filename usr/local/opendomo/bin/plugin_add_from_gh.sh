@@ -19,9 +19,10 @@ LOGDIR="/var/opendomo/log"
 URLPROJ="https://github.com/$GITUSER/$GITPROJ"
 CLONEPROJ="https://github.com/$GITUSER/$GITPROJ.git"
 
-# First we go to the home directory
-cd 
-TMPDIR=`pwd`
+# cd 
+# TMPDIR=`pwd` # So far we don't have much space in the home dir. 
+
+TMPDIR="/var/opendomo/tmp"
 cd "$TMPDIR"
 if wget --no-check-certificate -qO- "$URLPROJ" &>/dev/null
 then
