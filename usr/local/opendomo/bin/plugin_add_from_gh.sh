@@ -97,7 +97,7 @@ then
 	echo " This is not a compulsory directory if the plugin doesn't have styles, images or interface modifications"
 fi	
 # Cleanup old packages
-rm *.tar.gz
+rm *.tar.gz 2> /dev/null
 . ./mkpkg.sh >> $LOGDIR/$GITPROJ.log
 if test -z "$PKGID"
 then
@@ -121,7 +121,13 @@ then
 	echo "99999999" > /var/opendomo/plugins/$PKGID.version
 	manage_conf.sh copy
 	createwrappers.sh
-
+	DEPS=`cat /var/opendomo/plugins/$PKGID.deps` 
+	if ! test -z "$DEPS"
+	then
+		echo "# Installing dependences: $DEPS"
+		echo $DEPS >> /var/opendomo/apt/queue
+		echo "0" > /var/opendomo/apt/update
+	fi
 	echo "# Plugin $PKGID installed successfully"
 else
 	echo "#ERROR decompressing file"
