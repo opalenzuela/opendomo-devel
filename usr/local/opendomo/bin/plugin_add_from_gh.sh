@@ -96,7 +96,8 @@ then
 	echo "#WARN var directory is missing!"
 	echo " This is not a compulsory directory if the plugin doesn't have styles, images or interface modifications"
 fi	
-
+# Cleanup old packages
+rm *.tar.gz
 . ./mkpkg.sh >> $LOGDIR/$GITPROJ.log
 if test -z "$PKGID"
 then
