@@ -15,6 +15,6 @@ How to try it?
 First download and install the latest [OpenDomo OS 2 version] (http://es.opendomo.org/downloads), log into it as admin and type the following commands:
 
     $ managePlugins.sh
-    $ plugin_add.sh oddevel
-    $ cd /var/opendomo/tmp/
-    $ plugin_add_from_gh.sh opalenzuela opendomo-devel
+    $ installPlugin.sh oddevel
+
+Note that it can also be installed from the Configuration menu in the web interface.
