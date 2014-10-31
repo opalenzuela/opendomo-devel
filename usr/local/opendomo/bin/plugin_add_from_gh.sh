@@ -5,15 +5,22 @@
 
 # Copyright(c) 2014 OpenDomo Services SL. Licensed under GPL v3 or later
 
-if test -z "$2"
+if test -z "$1"
 then
     echo "usage: $0 GITuser GITproject"
+	echo "usage: $0 GITuser:GITproject"
     echo
     exit 1
 fi
 
-GITUSER="$1"
-GITPROJ="$2"
+if test -n "$2"
+then
+	GITUSER="$1"
+	GITPROJ="$2"
+else
+	GITUSER=`echo $1 | cut -f1 -d:`
+	GITPROJ=`echo $1 | cut -f2 -d:`
+fi
 
 LOGDIR="/var/opendomo/log"
 URLPROJ="https://github.com/$GITUSER/$GITPROJ"
@@ -29,7 +36,7 @@ then
 	URLFILE="https://github.com/$GITUSER/$GITPROJ/tarball/master"
 	echo "# Retrieving file $URLFILE"
 else
-	echo "#ERROR: invalid project $URLPROJ"
+	echo "#ERROR invalid project $URLPROJ"
 	exit 2
 fi
 
