@@ -100,8 +100,8 @@ then
 fi
 if ! test -d var
 then
-	echo "#WARN var directory is missing!"
-	echo " This is not a compulsory directory if the plugin doesn't have styles, images or interface modifications"
+	echo "#ERROR var directory is missing!"
+	exit 5
 fi	
 # Cleanup old packages
 rm *.tar.gz 2> /dev/null
