@@ -104,8 +104,8 @@ then
 	exit 5
 fi	
 
+# Looking for use of undeclared events
 EVENTS=`grep -R -e "\/bin\/logevent" usr/local/opendomo/* | sed -e 's/^ *//g' -e 's/^\t*//g'  | cut -f2,3 -d' ' | uniq | sed 's/ /-/'`
-
 for ev in $EVENTS
 do
 	if ! test -f usr/local/opendomo/events/$ev
@@ -123,6 +123,27 @@ then
 	exit 5
 fi
 
+# Checking for package information files
+if ! test -f var/opendomo/plugins/$PKGID.deps
+then
+	echo "#ERROR: $PKGID.deps file must exist (may be empty if no dependences required)"
+	exit 6
+fi
+if ! test -f var/opendomo/plugins/$PKGID.info
+then
+	echo "#ERROR: $PKGID.info file must exist"
+	exit 6
+else
+	source ./var/opendomo/plugins/$PKGID.info
+	if test -z "$DESCRIPTION" || test -z "$VERSION" || test -z "$REQUIRED_BYTES"
+	then
+		echo "#ERROR: Missing required fields in $PKGID.info file"
+		exit 7
+	fi
+fi
+
+
+# Filesystem testing finished. Now installing package
 TGZFILE=`ls *.tar.gz`
 echo "# Installing $PKGID ... "
 if test -z "$TGZFILE"
