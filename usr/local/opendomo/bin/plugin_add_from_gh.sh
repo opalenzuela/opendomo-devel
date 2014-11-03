@@ -104,7 +104,7 @@ then
 	exit 5
 fi	
 
-EVENTS=`grep "logevent" usr/local/opendomo/* | cut -f2,3 | uniq | sed 's/ /-/'`
+EVENTS=`grep -R "logevent" usr/local/opendomo/* | cut -f2,3 | uniq | sed 's/ /-/'`
 
 for ev in $EVENTS
 do
