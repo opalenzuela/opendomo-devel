@@ -103,6 +103,17 @@ then
 	echo "#ERROR var directory is missing!"
 	exit 5
 fi	
+
+EVENTS=`grep "logevent" usr/local/opendomo/* | cut -f2,3 | uniq | sed 's/ /-/'`
+
+for ev in $EVENTS
+do
+	if ! test -f usr/local/opendomo/events/$ev
+	then
+		echo "#WARNING Event $ev is invoked, but not declared in usr/local/opendomo/events"
+	fi
+done
+
 # Cleanup old packages
 rm *.tar.gz 2> /dev/null
 . ./mkpkg.sh >> $LOGDIR/$GITPROJ.log
