@@ -1,1 +1,1 @@
-python ca-certificates
+python ca-certificates curl git
