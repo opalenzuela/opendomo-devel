@@ -1,6 +1,6 @@
 #!/bin/sh
 ### BEGIN INIT INFO
-# Provides:          odauto
+# Provides:          oddevel
 # Required-Start:    
 # Required-Stop:
 # Should-Start:      
@@ -28,6 +28,32 @@ do_background() {
 	
 do_start () {
 	log_action_begin_msg "Starting simulator"
+	# 1. Simulate a ODEnergy device:
+cat 'URL=http://127.0.0.1/data/
+TYPE="odenergy"
+REFRESH=10
+USER=""
+PASS=""
+DEVNAME="odenergydemo"' > /etc/opendomo/control/odenergydemo.conf
+		
+	# 2. Simulate a ODControl device:
+cat 'URL=http://127.0.0.1/cgi-bin/odcontrol2.cgi/
+TYPE="odcontrol2"
+REFRESH=10
+USER=""
+PASS=""
+DEVNAME="odcontroldemo"' > /etc/opendomo/control/odcontroldemo.conf	
+	
+	
+	# 3. Simulate a IP camera
+cat 'URL=http://127.0.0.1/cgi-bin
+TYPE="foscam"
+REFRESH=10
+USER=""
+PASS=""
+DEVNAME="foscamdemo"' > /etc/opendomo/control/foscamdemo.conf	
+	
+
 	cd /usr/local/opendomo/daemons/
 	$0 background > /dev/null &
 	log_action_end_msg $?
@@ -36,6 +62,11 @@ do_start () {
 do_stop () {
 	log_action_begin_msg "Stoping simulator"
 	rm $PIDFILE 2>/dev/null	
+	# 1. Delete odenergy simulated device:
+	rm -fr /etc/opendomo/control/odenergydemo*
+	# 2. Delete odcontrol2 simulated device:
+	rm -fr /etc/opendomo/control/odcontroldemo*
+	
 	log_action_end_msg $?
 }
 
