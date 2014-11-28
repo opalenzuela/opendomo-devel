@@ -29,7 +29,7 @@ do_background() {
 do_start () {
 	log_action_begin_msg "Starting simulator"
 	# 1. Simulate a ODEnergy device:
-cat 'URL=http://127.0.0.1/data/
+echo 'URL=http://127.0.0.1/data/
 TYPE="odenergy"
 REFRESH=10
 USER=""
@@ -37,7 +37,7 @@ PASS=""
 DEVNAME="odenergydemo"' > /etc/opendomo/control/odenergydemo.conf
 		
 	# 2. Simulate a ODControl device:
-cat 'URL=http://127.0.0.1/cgi-bin/odcontrol2.cgi/
+echo 'URL=http://127.0.0.1/cgi-bin/odcontrol2.cgi/
 TYPE="odcontrol2"
 REFRESH=10
 USER=""
@@ -46,7 +46,7 @@ DEVNAME="odcontroldemo"' > /etc/opendomo/control/odcontroldemo.conf
 	
 	
 	# 3. Simulate a IP camera
-cat 'URL=http://127.0.0.1/cgi-bin
+echo 'URL=http://127.0.0.1/cgi-bin
 TYPE="foscam"
 REFRESH=10
 USER=""

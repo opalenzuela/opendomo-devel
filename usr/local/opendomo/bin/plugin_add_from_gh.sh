@@ -158,7 +158,8 @@ cd /
 if tar  --no-overwrite-dir -zxvf $TGZFILE  >> /var/opendomo/plugins/$PKGID.files 
 then
 	echo "99999999" > /var/opendomo/plugins/$PKGID.version
-	sudo manage_conf.sh copy
+	#sudo manage_conf.sh copy
+	
 	createwrappers.sh
 	DEPS=`cat /var/opendomo/plugins/$PKGID.deps` 
 	if ! test -z "$DEPS"
