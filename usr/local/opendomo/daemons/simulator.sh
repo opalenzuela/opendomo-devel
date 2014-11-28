@@ -52,7 +52,8 @@ REFRESH=10
 USER=""
 PASS=""
 DEVNAME="foscamdemo"' > /etc/opendomo/control/foscamdemo.conf	
-	
+	echo 'NAME=foscamdemo
+DESCRIPTION="foscamdemo"' > /etc/opendomo/vision/foscamdemo.conf	
 
 	cd /usr/local/opendomo/daemons/
 	$0 background > /dev/null &
@@ -66,6 +67,9 @@ do_stop () {
 	rm -fr /etc/opendomo/control/odenergydemo*
 	# 2. Delete odcontrol2 simulated device:
 	rm -fr /etc/opendomo/control/odcontroldemo*
+	# 3. Delete simulated camera
+	rm -fr /etc/opendomo/control/foscamdemo*
+	rm -fr /etc/opendomo/vision/foscamdemo.conf	
 	
 	log_action_end_msg $?
 }
