@@ -53,7 +53,8 @@ USER=""
 PASS=""
 DEVNAME="foscamdemo"' > /etc/opendomo/control/foscamdemo.conf	
 	echo 'NAME=foscamdemo
-DESCRIPTION="foscamdemo"' > /etc/opendomo/vision/foscamdemo.conf	
+TYPE=ip
+DESCRIPTION="Simulated camera"' > /etc/opendomo/vision/foscamdemo.conf	
 
 	cd /usr/local/opendomo/daemons/
 	$0 background > /dev/null &
