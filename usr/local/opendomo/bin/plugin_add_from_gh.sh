@@ -110,9 +110,20 @@ for ev in $EVENTS
 do
 	if ! test -f usr/local/opendomo/events/$ev
 	then
-		echo "#WARNING Event $ev is invoked, but not declared in usr/local/opendomo/events"
+		echo "#WARNING Event $ev invoked, not declared in usr/local/opendomo/events"
 	fi
 done
+
+# Generating automatic doc pages
+if test -d usr/local/opendomo/docs; then
+	for serv in usr/local/opendomo/services/*/*.sh 
+	do
+		bname=`basename $serv`
+		grep '##' $serv > usr/local/opendomo/docs/$bname.txt
+	done
+else
+	echo "#WARNING usr/local/opendomo/docs directory does not exist"
+fi
 
 # Cleanup old packages
 rm *.tar.gz 2> /dev/null
