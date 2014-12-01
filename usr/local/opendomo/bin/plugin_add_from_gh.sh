@@ -119,7 +119,7 @@ if test -d usr/local/opendomo/docs; then
 	for serv in usr/local/opendomo/services/*/*.sh 
 	do
 		bname=`basename $serv`
-		grep '##' $serv > usr/local/opendomo/docs/$bname.txt
+		grep '##' $serv | sed 's/##//' > usr/local/opendomo/docs/$bname.txt
 	done
 else
 	echo "#WARNING usr/local/opendomo/docs directory does not exist"
