@@ -16,6 +16,9 @@ if test -z "$1"; then
 	done
 	echo "	-intro	Introduction	chapter"
 else
-	cat /usr/local/opendomo/docs/$1.txt | sed 's/^/# /'
+	echo "list:developerManual.sh"
+	cat /usr/local/opendomo/docs/$1 | sed 's/^/# /'
+	echo "actions:"
+	echo "	goback	Back"
 fi
 echo
