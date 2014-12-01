@@ -9,8 +9,12 @@
 
 echo "#>Developer manual"
 if test -z "$1"; then
-	echo "list:$0"
-	echo "	-intro	Introduction	chapter"
+	echo "list:$0	filterable"
+	cd /usr/local/opendomo/docs
+	for filename in *.txt; do
+		echo "	$filename	$filename 	chapter"
+	done
+	echo "	intro	Introduction	chapter"
 else
 	cat /usr/local/opendomo/docs/$1.txt | sed 's/^/# /'
 fi
