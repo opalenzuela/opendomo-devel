@@ -4,8 +4,7 @@
 
 # Copyright(c) 2014 OpenDomo Services SL. Licensed under GPL v3 or later
 
-## This service will display the manual page corresponding to the 
-## requested service.
+## This service will display the manual page corresponding to the requested service.
 
 echo "#>Developer manual"
 if test -z "$1"; then
@@ -17,7 +16,7 @@ if test -z "$1"; then
 	echo "	-intro	Introduction	chapter"
 else
 	echo "list:developerManual.sh"
-	cat /usr/local/opendomo/docs/$1 | sed 's/^/# /'
+	cat /usr/local/opendomo/docs/$1 | sed ':a;N;$!ba;s/\n/ /g'
 	echo "actions:"
 	echo "	goback	Back"
 fi

@@ -118,7 +118,7 @@ done
 if test -d usr/local/opendomo/docs; then
 	for serv in usr/local/opendomo/services/*/*.sh 
 	do
-		bname=`basename $serv`
+		bname=`basename $serv | cut -f1 -d.`
 		grep '##' $serv | sed 's/##//' > usr/local/opendomo/docs/$bname.txt
 	done
 else
