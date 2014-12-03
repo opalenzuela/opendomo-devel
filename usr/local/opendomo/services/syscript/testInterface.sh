@@ -1,11 +1,13 @@
 #!/bin/sh
 #desc:Test interface
-#package:cgiextra
+#package:oddevel
 #type:local
 
-# This script contains all the possible blocks used in the CGI.
-# Before approving a new theme or skin, it should be verified that the total
-# display is acceptable.
+# Copyright(c) 2014 OpenDomo Services SL. Licensed under GPL v3 or later
+
+## This script contains all the possible blocks used in the CGI.
+## Before approving a new theme or skin, it should be verified that the total
+## display is acceptable.
 
 S=`basename $0`
 
@@ -26,7 +28,7 @@ echo "	$S	Refresh"
 echo
 
 echo "#>Multiselect list, with actions"
-echo "list:$S	selectable"
+echo "list:$S	listbox selectable"
 echo "	-item1	Item 1	item"
 echo "	-item2	Long description item 2	item"
 echo "actions:"

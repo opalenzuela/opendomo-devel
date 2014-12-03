@@ -28,16 +28,17 @@ do_background() {
 	
 do_start () {
 	log_action_begin_msg "Starting simulator"
-	# 1. Simulate a ODEnergy device:
-echo 'URL=http://127.0.0.1/data/
+	if ! test -f $PIDFILE; then
+		# 1. Simulate a ODEnergy device:
+		echo 'URL=http://127.0.0.1/data/
 TYPE="odenergy"
 REFRESH=10
 USER=""
 PASS=""
 DEVNAME="odenergydemo"' > /etc/opendomo/control/odenergydemo.conf
 		
-	# 2. Simulate a ODControl device:
-echo 'URL=http://127.0.0.1/cgi-bin/odcontrol2.cgi/
+		# 2. Simulate a ODControl device:
+		echo 'URL=http://127.0.0.1/cgi-bin/odcontrol2.cgi/
 TYPE="odcontrol2"
 REFRESH=10
 USER=""
@@ -45,19 +46,20 @@ PASS=""
 DEVNAME="odcontroldemo"' > /etc/opendomo/control/odcontroldemo.conf	
 	
 	
-	# 3. Simulate a IP camera
-echo 'URL=http://127.0.0.1/cgi-bin
+		# 3. Simulate a IP camera
+		echo 'URL=http://127.0.0.1/cgi-bin
 TYPE="foscam"
 REFRESH=10
 USER=""
 PASS=""
 DEVNAME="foscamdemo"' > /etc/opendomo/control/foscamdemo.conf	
-	echo 'NAME=foscamdemo
+		echo 'NAME=foscamdemo
 TYPE=ip
 DESCRIPTION="Simulated camera"' > /etc/opendomo/vision/foscamdemo.conf	
 
-	cd /usr/local/opendomo/daemons/
-	$0 background > /dev/null &
+		cd /usr/local/opendomo/daemons/
+		$0 background > /dev/null &
+	fi
 	log_action_end_msg $?
 }
 
