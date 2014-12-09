@@ -8,7 +8,7 @@
 
 echo "#>Developer manual"
 if test -z "$1"; then
-	echo "list:developerManual.sh	filterable"
+	echo "list:developerManual.sh	detailed filterable"
 	cd /usr/local/opendomo/docs
 	for filename in *.txt; do
 		echo "	-$filename	$filename 	chapter"
