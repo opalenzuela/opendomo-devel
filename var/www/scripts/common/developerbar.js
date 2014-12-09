@@ -1,18 +1,24 @@
 
 jQuery(function($) {
-	var    dbar = "<a id='makeawish' class='tool' href='javascript:makeawish();'></a>";
-	dbar = dbar + "<a id='debugbutton' class='tool' href='javascript:showDebug();'></a>";
-	dbar = dbar + "<a id='notify' class='tool' href='javascript:notifyProblem();'></a>";
+	var    dbar = "<a id='consolebutton' class='tool' href='javascript:showDebug();'></a>";
+	dbar = dbar + "<a id='makeawish' class='tool' href='javascript:makeawish();'></a>";
+	dbar = dbar + "<a id='debugbutton' class='tool' href='javascript:notifyProblem();'></a>";
+	//dbar = dbar + "<a id='notify' class='tool' href='javascript:notifyProblem();'></a>";
 	dbar = dbar + "<a id='translate' class='tool' href='javascript:putFlags();'></a>";
 	$("#footer").prepend(dbar);
 	$("#makeawish").css("display","inline-block").css("background","url(/images/wish.png) no-repeat scroll center center");
 	$("#debugbutton").css("display","inline-block").css("background","url(/images/debug.png) no-repeat scroll center center");
-	$("#notify").css("display","inline-block").css("background","url(/images/notify.png) no-repeat scroll center center");
+	//$("#notify").css("display","inline-block").css("background","url(/images/notify.png) no-repeat scroll center center");
+	$("#consolebutton").css("display","inline-block").css("background","url(/images/console.png) no-repeat scroll center center");
 	$("#translate").css("display","inline-block").css("background","url(/images/translate.png) no-repeat scroll center center");
 });
 
 function makeawish() {
-	openPopup('http://es.opendomo.org/makeawish');
+	showBubble('https://github.com/opalenzuela/opendomo/issues/new?title=Name+your+wish&body=(describe+your+wish)&labels=wish');
+}
+
+function showDebug() {
+	$("#debug_box").show();
 }
 
 function putFlags(){
@@ -38,9 +44,9 @@ function translateMe(tag){
 		tag = tag.parentNode;
 		if (tag.tagName=="UL") script = tag.id + ".sh";
 	}
-	openPopup(url+"?data="+text+"&id="+id+"&lang="+lang+"&script="+script);
+	showBubble(url+"?data="+text+"&id="+id+"&lang="+lang+"&script="+script);
 }
 
 function notifyProblem(){
-	openPopup('http://www.opendomo.com/wiki/index.php?action=edit&title=Discusión:'+basename(location.pathname));
+	showBubble('https://github.com/opalenzuela/opendomo/issues/new?title=Problem+in+'+basename(location.pathname) + '&body=There+was+a+problem+in+script'+basename(location.pathname));
 }
