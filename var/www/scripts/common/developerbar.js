@@ -14,7 +14,7 @@ jQuery(function($) {
 });
 
 function makeawish() {
-	showBubble('https://github.com/opalenzuela/opendomo/issues/new?title=Name+your+wish&body=(describe+your+wish)&labels=wish');
+	openPopup('https://github.com/opalenzuela/opendomo/issues/new?title=Name+your+wish&body=(describe+your+wish)&labels=wish');
 }
 
 function showDebug() {
@@ -48,5 +48,5 @@ function translateMe(tag){
 }
 
 function notifyProblem(){
-	showBubble('https://github.com/opalenzuela/opendomo/issues/new?title=Problem+in+'+basename(location.pathname) + '&body=There+was+a+problem+in+script'+basename(location.pathname));
+	openPopup('https://github.com/opalenzuela/opendomo/issues/new?title=Problem+in+'+basename(location.pathname) + '&body=There+was+a+problem+in+script'+basename(location.pathname));
 }
