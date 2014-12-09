@@ -57,5 +57,5 @@ function translateMe(tag){
 }
 
 function notifyProblem(){
-	openPopup('https://github.com/opalenzuela/opendomo/issues/new?title=Problem+in+'+basename(location.pathname) + '&body=There+was+a+problem+in+script'+basename(location.pathname));
+	openPopup('https://github.com/opalenzuela/opendomo/issues/new?title=Problem+in+'+basename(location.pathname) + '&body=There+was+a+problem+in+script+'+basename(location.pathname));
 }
