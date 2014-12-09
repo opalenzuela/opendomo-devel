@@ -21,9 +21,11 @@ var debugvisible = false;
 function showDebug() {
 	if (debugvisible==true) {
 		$("#debug_box").hide();
+		$("p.debug").hide();
 		debugvisible = false;	
 	} else {
 		$("#debug_box").show();
+		$("p.debug").show();
 		debugvisible = true;
 	}
 }
