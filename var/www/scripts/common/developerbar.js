@@ -17,8 +17,15 @@ function makeawish() {
 	openPopup('https://github.com/opalenzuela/opendomo/issues/new?title=Name+your+wish&body=(describe+your+wish)&labels=wish');
 }
 
+var debugvisible = false;
 function showDebug() {
-	$("#debug_box").show();
+	if (debugvisible==true) {
+		$("#debug_box").hide();
+		debugvisible = false;	
+	} else {
+		$("#debug_box").show();
+		debugvisible = true;
+	}
 }
 
 function putFlags(){
