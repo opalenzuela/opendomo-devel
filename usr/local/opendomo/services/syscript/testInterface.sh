@@ -170,7 +170,7 @@ echo "#ERR Error message"
 echo "#URL http://www.opendomo.org"
 echo
 
-echo "#>Wizard list with explanation	wizard"
+echo "#>Wizard list with explanation"
 echo "list:$S	wizard"
 echo "	:	This is the explanation	:"
 echo "	item1	Item 1	item"
@@ -179,7 +179,7 @@ echo "actions:"
 echo "	goback	Back"
 echo
 
-echo "#>Wizard form with explanation	wizard"
+echo "#>Wizard form with explanation"
 echo "form:$S	wizard"
 echo "	:	This is the explanation	:"
 echo "	item1	Item 1	text"

@@ -29,6 +29,10 @@ do_background() {
 do_start () {
 	log_action_begin_msg "Starting simulator"
 	if ! test -f $PIDFILE; then
+		# 0. Pre-required directories
+		test -d /etc/opendomo/control || mkdir -p /etc/opendomo/control
+		test -d /etc/opendomo/vision || mkdir -p /etc/opendomo/vision
+		
 		# 1. Simulate a ODEnergy device:
 		echo 'URL=http://127.0.0.1/data/
 TYPE="odenergy"
@@ -53,6 +57,7 @@ REFRESH=10
 USER=""
 PASS=""
 DEVNAME="foscamdemo"' > /etc/opendomo/control/foscamdemo.conf	
+		
 		echo 'NAME=foscamdemo
 TYPE=ip
 DESCRIPTION="Simulated camera"' > /etc/opendomo/vision/foscamdemo.conf	
