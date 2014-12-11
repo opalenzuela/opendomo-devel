@@ -62,8 +62,8 @@ echo "	goback	Back"
 echo
 
 echo "#>Filterable detailed list"
-echo "list:$S	detailed filterable"
-for i in Seat Wolkswagen Audi Mazda Porsche Fiat Ferrari Skoda
+echo "list:carList	detailed filterable"
+for i in Seat Wolkswagen Audi Mazda Porsche Fiat Ferrari Skoda Ford Bugatti Chrysler Buick Dodge Chevrolet Mercedes Subaru
 do
 	echo "	$i	$i	item	$i"
 done
@@ -167,6 +167,7 @@ echo "# Regular comment"
 echo "#INFO Informative message"
 echo "#WARN Warning message"
 echo "#ERR Error message"
+echo "#TIP This is a tip"
 echo "#URL http://www.opendomo.org"
 echo
 
