@@ -22,10 +22,12 @@ function showDebug() {
 	if (debugvisible==true) {
 		$("#debug_box").hide();
 		$("p.debug").hide();
+		$("div.debug").hide();
 		debugvisible = false;	
 	} else {
 		$("#debug_box").show();
 		$("p.debug").show();
+		$("div.debug").show();
 		debugvisible = true;
 	}
 }

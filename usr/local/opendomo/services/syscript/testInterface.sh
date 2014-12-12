@@ -1,8 +1,8 @@
-#!/bin/sh
+﻿#!/bin/sh
 #desc:Test interface
 #package:oddevel
 #type:local
-
+ 
 # Copyright(c) 2014 OpenDomo Services SL. Licensed under GPL v3 or later
 
 ## This script contains all the possible blocks used in the CGI.
