@@ -1,4 +1,4 @@
-#!/bin/sh
+﻿#!/bin/sh
 #desc:Commit plugin to GitHub
 #package:oddevel
 #type:local
