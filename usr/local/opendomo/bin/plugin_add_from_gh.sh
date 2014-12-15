@@ -1,4 +1,4 @@
-#!/bin/sh
+﻿#!/bin/sh
 #desc:Add plugin from GitHub
 #package:oddevel
 #type:local
