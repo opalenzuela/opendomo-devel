@@ -1,4 +1,5 @@
 #!/bin/sh
 echo "Content-type:image/jpeg"
 echo 
-cat /var/www/images/nocam.jpeg
+SECOND=`date +%S | cut -b2`
+cat /var/www/images/camtest0$SECOND.jpg
