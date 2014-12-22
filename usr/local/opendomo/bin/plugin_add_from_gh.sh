@@ -111,9 +111,11 @@ do
 	SCRIPTNAME=`echo $ev | cut -f1 -d:`
 	SCRIPTNAME=`basename $SCRIPTNAME`
 	EVENTNAME=`echo $ev | sed -e 's/+/ /g' -e 's/"//g' | awk -F"logevent" '{print $2}' | awk '{print $2 "-" $1}' `
-	if ! test -f usr/local/opendomo/events/$EVENTNAME
-	then
-		echo "#WARNING Event $EVENTNAME invoked in $SCRIPTNAME but not defined"
+	if ! test -z "$EVENTNAME"; then
+		if ! test -f usr/local/opendomo/events/$EVENTNAME
+		then
+			echo "#WARNING Event $EVENTNAME invoked in $SCRIPTNAME but not defined"
+		fi
 	fi
 done
 
