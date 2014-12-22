@@ -105,12 +105,15 @@ then
 fi	
 
 # Looking for use of undeclared events
-EVENTS=`grep -R -e "\/bin\/logevent" usr/local/opendomo/* | sed -e 's/^ *//g' -e 's/^\t*//g'  | cut -f2,3 -d' ' | uniq | sed 's/ /-/'`
+EVENTS=`grep -R -e "logevent" usr/local/opendomo/* | sed -e 's/\t//g' -e 's/ /+/g'`
 for ev in $EVENTS
 do
-	if ! test -f usr/local/opendomo/events/$ev
+	SCRIPTNAME=`echo $ev | cut -f1 -d:`
+	SCRIPTNAME=`basename $SCRIPTNAME`
+	EVENTNAME=`echo $ev | sed -e 's/+/ /g' -e 's/"//g' | awk -F"logevent" '{print $2}' | awk '{print $2 "-" $1}' `
+	if ! test -f usr/local/opendomo/events/$EVENTNAME
 	then
-		echo "#WARNING Event $ev invoked, not declared in usr/local/opendomo/events"
+		echo "#WARNING Event $EVENTNAME invoked in $SCRIPTNAME but not defined"
 	fi
 done
 
