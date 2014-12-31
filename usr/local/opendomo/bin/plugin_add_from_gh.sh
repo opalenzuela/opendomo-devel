@@ -151,9 +151,10 @@ then
 	exit 6
 else
 	source ./var/opendomo/plugins/$PKGID.info
-	if test -z "$DESCRIPTION" || test -z "$VERSION" || test -z "$REQUIRED_BYTES"
+	if test -z "$DESCRIPTION" || test -z "$VERSION" || test -z "$AUTHORID" || test -z "$REPOSITORY"
 	then
 		echo "#ERROR: Missing required fields in $PKGID.info file"
+		echo "DESCRIPTION, VERSION, AUTHORID and REPOSITORY are compulsory"
 		exit 7
 	fi
 fi

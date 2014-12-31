@@ -7,9 +7,9 @@
 ## This service will let the developer choose which projects are available.
 
 DEVELDIR="/var/opendomo/tmp"
-echo "#>Developer manual"
+echo "#>Installed plugins"
 if test -z "$1"; then
-	echo "list:viewProjects.sh	detailed filterable"
+	echo "list:viewProjects.sh	detailed"
 	cd $DEVELDIR
 	for project in *; do
 		if test -d $project && test -f ./$project/build.bat
@@ -22,6 +22,7 @@ if test -z "$1"; then
 		echo "#INFO No projects were found"
 	fi
 else
+	echo "#>Details"
 	echo "form:viewProjects.sh"
 	cd $DEVELDIR/$1
 	INFOFILE=`ls ./var/opendomo/plugins/*.info`

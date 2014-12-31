@@ -22,4 +22,6 @@ else
 	fi
 fi
 echo
+echo "actions:"
+echo "	goback	Back"
 echo
