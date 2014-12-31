@@ -2,7 +2,7 @@
 #desc:Developer manual
 #package:oddevel
 
-# Copyright(c) 2014 OpenDomo Services SL. Licensed under GPL v3 or later
+# Copyright(c) 2015 OpenDomo Services SL. Licensed under GPL v3 or later
 
 ## This service will display the manual page corresponding to the requested service.
 
