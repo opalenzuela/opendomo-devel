@@ -57,10 +57,10 @@ else
 	echo "	goback	Back"
 	echo "	installPluginFromGithub.sh	Update"
 	echo
-	cd usr/local/opendomo/
+	cd $DEVELDIR
 	echo "#> Services"
-	echo "list:editService.sh"
-	for serv in `find ./services -type f`; do
+	echo "list:editService.sh	detailed"
+	for serv in `find ./$1/usr/local/opendomo/services -type f`; do
 		desc=`head $serv -n4 | grep desc: | cut -f2 -d:`
 		bname=`basename $serv`
 		echo "	-$serv	$bname	service	$desc"
@@ -68,21 +68,21 @@ else
 	echo
 	
 	echo "#> Daemons"
-	echo "list:editDaemon.sh"
-	for serv in `find ./daemons -type f`; do
+	echo "list:editDaemon.sh	detailed"
+	for serv in `find ./$1/usr/local/opendomo/daemons -type f`; do
 		desc=`head $serv -n4 | grep desc: | cut -f2 -d:`
 		bname=`basename $serv`
 		echo "	-$serv	$bname	daemon	$desc"
 	done
+	echo
 	
 	echo "#> Other files"
-	echo "list:editDaemon.sh"
+	echo "list:editDaemon.sh	detailed"
 	cd $DEVELDIR/$1
-	cd var
-	for serv in `find ./ -type f`; do
+	for serv in `find ./var/www -type f`; do
 		extension=`basename $serv | cut -f2 -d.`
 		bname=`basename $serv`
-		echo "	-$serv	$bname	file	$extension"
-	done	
+		echo "	-$serv	$bname	file $extension	$extension"
+	done
 fi
 echo
