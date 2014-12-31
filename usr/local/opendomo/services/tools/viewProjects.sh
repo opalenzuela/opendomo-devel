@@ -21,6 +21,22 @@ if test -z "$1"; then
 	if test -z "$found"; then
 		echo "#INFO No projects were found"
 	fi
+	echo
+	echo "#>Get development version"
+	echo "list:viewProjects.sh	detailed"
+	cd /var/opendomo/plugins
+	for project in *.info; do
+		source ./$project
+		if test -z "$AUTHORID" || test -z "$REPOSITORY"; then
+			echo "	-	$project	project invalid	Missing parameters"
+		else
+			if test -d $DEVELDIR/$REPOSITORY; then
+				echo "	-$REPOSITORY	$project 	project selected	$DESCRIPTION"
+			else
+				echo "	-$AUTHORID:$REPOSITORY	$project 	project	$DESCRIPTION"
+			fi
+		fi
+	done
 else
 	echo "#>Details"
 	echo "form:viewProjects.sh"
