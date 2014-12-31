@@ -59,6 +59,7 @@ else
 	echo
 	cd usr/local/opendomo/
 	echo "#> Services"
+	echo "list:editService.sh"
 	for serv in `find ./services -type f`; do
 		desc=`head $serv -n4 | grep desc: | cut -f2 -d:`
 		bname=`basename $serv`
@@ -67,10 +68,21 @@ else
 	echo
 	
 	echo "#> Daemons"
+	echo "list:editDaemon.sh"
 	for serv in `find ./daemons -type f`; do
 		desc=`head $serv -n4 | grep desc: | cut -f2 -d:`
 		bname=`basename $serv`
 		echo "	-$serv	$bname	daemon	$desc"
 	done
+	
+	echo "#> Other files"
+	echo "list:editDaemon.sh"
+	cd $DEVELDIR/$1
+	cd var
+	for serv in `find ./ -type f`; do
+		extension=`basename $serv | cut -f2 -d.`
+		bname=`basename $serv`
+		echo "	-$serv	$bname	file	$extension"
+	done	
 fi
 echo
