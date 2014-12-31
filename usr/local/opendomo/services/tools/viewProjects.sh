@@ -83,7 +83,7 @@ else
 	for serv in `find ./$1/var/www -type f`; do
 		extension=`basename $serv | cut -f2 -d.`
 		bname=`basename $serv`
-		echo "	-$serv	$bname	file $extension	$extension"
+		echo "	-$serv	$bname	$extension file	$extension"
 	done
 fi
 echo
