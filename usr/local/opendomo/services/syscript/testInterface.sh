@@ -27,10 +27,14 @@ echo "actions:"
 echo "	$S	Refresh"
 echo
 
-echo "#>Selectable list, with actions"
+echo "#>Selectable list, with actions and separator"
 echo "list:$S	listbox selectable"
 echo "	-item1	Item 1	item"
 echo "	-item2	Long description item 2	item"
+echo "	-item3	Item 3	item"
+echo "	-sep	Separator	separator"
+echo "	-item4	Item 4	item"
+echo "	-item5	Item 5	item"
 echo "actions:"
 echo "	$S	Refresh"
 echo
