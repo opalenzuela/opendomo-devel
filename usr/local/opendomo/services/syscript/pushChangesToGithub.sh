@@ -44,11 +44,11 @@ source $INFOFILE
 # Last: commit changes 
 if test -x /usr/bin/git
 then
-	EMAIL=`cat /home/$USER/.email`
+	EMAIL=`cat /home/$USER/.email` 2>/dev/null
 	git config --global user.name $USER
 	git config --global user.email $EMAIL
 	git commit -a -m "$DESCRIPTION"
-	if git push https://$USERNAME:$PASSWORD@github.com/$AUTHORID/$REPOSITORY.git master
+	if git push https://$USERNAME:$PASSWORD@github.com/$AUTHORID/$REPOSITORY.git master >/dev/null
 	then
 		echo "#> Push changes"
 		echo "form:viewProjects.sh"
