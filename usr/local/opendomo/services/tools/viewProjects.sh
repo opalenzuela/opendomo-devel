@@ -2,12 +2,12 @@
 #desc:View projects
 #package:oddevel
 
-# Copyright(c) 2014 OpenDomo Services SL. Licensed under GPL v3 or later
+# Copyright(c) 2015 OpenDomo Services SL. Licensed under GPL v3 or later
 
 ## This service will let the developer choose which projects are available.
 
 DEVELDIR="/var/opendomo/tmp"
-echo "#>Installed plugins"
+echo "#>Development plugins installed"
 if test -z "$1"; then
 	echo "list:viewProjects.sh	detailed"
 	cd $DEVELDIR
@@ -61,7 +61,7 @@ else
 	echo
 	cd $DEVELDIR
 	echo "#> Services"
-	echo "list:editService.sh	detailed"
+	echo "list:editFile.sh	detailed"
 	for serv in `find ./$1/usr/local/opendomo/services -type f`; do
 		desc=`head $serv -n4 | grep desc: | cut -f2 -d:`
 		bname=`basename $serv`
@@ -70,7 +70,7 @@ else
 	echo
 	
 	echo "#> Daemons"
-	echo "list:editDaemon.sh	detailed"
+	echo "list:editFile.sh	detailed"
 	for serv in `find ./$1/usr/local/opendomo/daemons -type f`; do
 		desc=`head $serv -n4 | grep desc: | cut -f2 -d:`
 		bname=`basename $serv`
@@ -79,9 +79,8 @@ else
 	echo
 	
 	echo "#> Other files"
-	echo "list:viewFile.sh	detailed"
-	cd $DEVELDIR/$1/var/www
-	for serv in `find ./ -type f`; do
+	echo "list:editFile.sh	detailed"
+	for serv in `find ./$1/var/www -type f`; do
 		extension=`basename $serv | cut -f2 -d.`
 		bname=`basename $serv`
 		echo "	-$serv	$bname	file $extension	$extension"
