@@ -21,6 +21,8 @@ if test -z "$1"; then
 	if test -z "$found"; then
 		echo "#INFO No projects were found"
 	fi
+	echo "actions:"
+	echo "	installPluginFromGithub.sh	Add new plugin"
 	echo
 	echo "#>Get development version"
 	echo "list:viewProjects.sh	detailed"
@@ -77,9 +79,9 @@ else
 	echo
 	
 	echo "#> Other files"
-	echo "list:editDaemon.sh	detailed"
-	cd $DEVELDIR/$1
-	for serv in `find ./var/www -type f`; do
+	echo "list:viewFile.sh	detailed"
+	cd $DEVELDIR/$1/var/www
+	for serv in `find ./ -type f`; do
 		extension=`basename $serv | cut -f2 -d.`
 		bname=`basename $serv`
 		echo "	-$serv	$bname	file $extension	$extension"

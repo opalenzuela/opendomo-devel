@@ -11,6 +11,7 @@ then
 	echo "form:`basename $0`"
 	echo "	user	User	text	$1"
 	echo "	project	Project	text	$2" 
+	echo "#TIP If you have a project created in Github, you just need to enter the project name and your user"
 else
 	echo "#LOADING Installing plugin"
 	echo
@@ -18,10 +19,10 @@ else
 	then
 		echo "#INFO Plugin [$2] installed"
 	else
-		echo "#ERRO The plugin was not found"	
+		echo "#ERRO The plugin was not found"
 	fi
 fi
-echo
 echo "actions:"
 echo "	goback	Back"
+echo "	installPluginFromGithub.sh	Install"
 echo
