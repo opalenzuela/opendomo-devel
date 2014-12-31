@@ -26,6 +26,9 @@ if test -z "$1"; then
 	echo "list:viewProjects.sh	detailed"
 	cd /var/opendomo/plugins
 	for project in *.info; do
+		REPOSITORY=""
+		AUTHORID=""
+		DESCRIPTION=""
 		source ./$project
 		if test -z "$AUTHORID" || test -z "$REPOSITORY"; then
 			echo "	-	$project	project invalid	Missing parameters"
@@ -53,5 +56,21 @@ else
 	echo "actions:"
 	echo "	goback	Back"
 	echo "	installPluginFromGithub.sh	Update"
+	echo
+	cd usr/local/opendomo/
+	echo "#> Services"
+	for serv in `find ./services -type f`; do
+		desc=`head $serv -n4 | grep desc: | cut -f2 -d:`
+		bname=`basename $serv`
+		echo "	-$serv	$bname	service	$desc"
+	done
+	echo
+	
+	echo "#> Daemons"
+	for serv in `find ./daemons -type f`; do
+		desc=`head $serv -n4 | grep desc: | cut -f2 -d:`
+		bname=`basename $serv`
+		echo "	-$serv	$bname	daemon	$desc"
+	done
 fi
 echo
