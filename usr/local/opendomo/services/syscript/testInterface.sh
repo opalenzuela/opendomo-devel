@@ -27,7 +27,7 @@ echo "actions:"
 echo "	$S	Refresh"
 echo
 
-echo "#>Multiselect list, with actions"
+echo "#>Selectable list, with actions"
 echo "list:$S	listbox selectable"
 echo "	-item1	Item 1	item"
 echo "	-item2	Long description item 2	item"
