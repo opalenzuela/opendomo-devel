@@ -25,7 +25,7 @@ else:
 	filename = form.getvalue("fname")
 	try: 
 		with open ("/var/opendomo/tmp/" + filename, "r") as myfile:
-			data=myfile.read().replace('\n', '')
+			data=myfile.read()
 		print """\
 		Content-Type: text/html\n
 		<html><head><link rel='stylesheet' type='text/css' href='/cgi-bin/css.cgi?admin'></head>
