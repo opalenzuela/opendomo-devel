@@ -80,7 +80,7 @@ else
 	echo "#> Daemons"
 	echo "list:editFile.sh	detailed foldable"
 	for serv in `find ./$1/usr/local/opendomo/daemons -type f`; do
-		desc=`head $serv -n4 | grep desc: | cut -f2 -d:`
+		desc=`head $serv -n4 | grep Short-Description | cut -f2 -d:`
 		bname=`basename $serv`
 		if grep -q start $serv && grep -q stop $serv && grep -q status $serv 
 		then
