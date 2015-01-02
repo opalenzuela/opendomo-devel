@@ -24,7 +24,7 @@ if "fname" not in form:
 else:
 	filename = form.getvalue("fname")
 	try: 
-		with open ("/var/opendomo/tmp/" filename, "r") as myfile:
+		with open ("/var/opendomo/tmp/" + filename, "r") as myfile:
 			data=myfile.read().replace('\n', '')
 		print """\
 		Content-Type: text/html\n
