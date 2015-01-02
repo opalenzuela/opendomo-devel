@@ -81,7 +81,7 @@ else
 	echo "#> Other files"
 	echo "list:editFile.sh	detailed"
 	for serv in `find ./$1/var/www -type f`; do
-		extension=`basename $serv | cut -f2 -d.`
+		extension=${serv##*.}
 		bname=`basename $serv`
 		echo "	-$serv	$bname	$extension file	$extension"
 	done
