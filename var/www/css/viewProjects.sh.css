@@ -1,0 +1,8 @@
+li.invalid p {
+	background: url('/images/error.png') no-repeat left center;
+	background-size: 20px;
+}
+li.valid p {
+	background: url('/images/success.png') no-repeat left center;
+	background-size: 20px;
+}

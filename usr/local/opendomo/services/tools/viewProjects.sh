@@ -31,14 +31,15 @@ if test -z "$1"; then
 		REPOSITORY=""
 		AUTHORID=""
 		DESCRIPTION=""
+		CODE=`echo $project | cut -f1 -d.`
 		source ./$project
 		if test -z "$AUTHORID" || test -z "$REPOSITORY"; then
-			echo "	-	$project	project invalid	Missing parameters"
+			echo "	-	$CODE	project invalid	Missing parameters in info file"
 		else
 			if test -d $DEVELDIR/$REPOSITORY; then
-				echo "	-$REPOSITORY	$project 	project selected	$DESCRIPTION"
+				echo "	-$REPOSITORY	$CODE 	project selected	$DESCRIPTION"
 			else
-				echo "	-$AUTHORID:$REPOSITORY	$project 	project	$DESCRIPTION"
+				echo "	-$AUTHORID:$REPOSITORY	$CODE 	project 	$DESCRIPTION"
 			fi
 		fi
 	done
@@ -65,7 +66,13 @@ else
 	for serv in `find ./$1/usr/local/opendomo/services -type f`; do
 		desc=`head $serv -n4 | grep desc: | cut -f2 -d:`
 		bname=`basename $serv`
-		echo "	-$serv	$bname	service	$desc"
+		if test -z "$desc"; 
+		then
+			echo "	-$serv	$bname	service invalid	$desc"
+		else
+			echo "	-$serv	$bname	service	$desc"
+		fi
+		
 	done
 	echo
 	
@@ -74,7 +81,12 @@ else
 	for serv in `find ./$1/usr/local/opendomo/daemons -type f`; do
 		desc=`head $serv -n4 | grep desc: | cut -f2 -d:`
 		bname=`basename $serv`
-		echo "	-$serv	$bname	daemon	$desc"
+		if grep -q start $serv && grep -q stop $serv && grep -q status $serv 
+		then
+			echo "	-$serv	$bname	daemon	$desc"
+		else
+			echo "	-$serv	$bname	daemon invalid	$desc"
+		fi
 	done
 	echo
 	
