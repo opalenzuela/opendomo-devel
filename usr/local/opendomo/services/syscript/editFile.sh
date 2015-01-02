@@ -7,7 +7,7 @@
 echo "#>Editing file"
 echo "form:editFile.sh"
 echo "	fullpath	Filename	readonly	$1"
-echo "	filecontent	File contents 	application	$1"
+echo "	filecontent	File contents 	application	/cgi-bin/texteditor.py?fname=$1"
 echo "actions:"
 echo "	goback	Back"
 echo 
