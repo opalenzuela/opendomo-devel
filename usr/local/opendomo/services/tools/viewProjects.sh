@@ -62,11 +62,12 @@ else
 	echo
 	cd $DEVELDIR
 	echo "#> Services"
-	echo "list:editFile.sh	detailed"
+	echo "list:editFile.sh	detailed foldable"
 	for serv in `find ./$1/usr/local/opendomo/services -type f`; do
 		desc=`head $serv -n4 | grep desc: | cut -f2 -d:`
+		package=`head $serv -n4 | grep package: | cut -f2 -d:`
 		bname=`basename $serv`
-		if test -z "$desc"; 
+		if test -z "$desc" ||  test -z "$package"
 		then
 			echo "	-$serv	$bname	service invalid	$desc"
 		else
@@ -77,7 +78,7 @@ else
 	echo
 	
 	echo "#> Daemons"
-	echo "list:editFile.sh	detailed"
+	echo "list:editFile.sh	detailed foldable"
 	for serv in `find ./$1/usr/local/opendomo/daemons -type f`; do
 		desc=`head $serv -n4 | grep desc: | cut -f2 -d:`
 		bname=`basename $serv`
@@ -91,7 +92,7 @@ else
 	echo
 	
 	echo "#> Other files"
-	echo "list:editFile.sh	detailed"
+	echo "list:editFile.sh	detailed foldable"
 	for serv in `find ./$1/var/www -type f`; do
 		extension=${serv##*.}
 		bname=`basename $serv`
