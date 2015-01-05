@@ -1,0 +1,9 @@
+#btns{
+	position:fixed;
+	bottom: 0px;
+	border: 1px solid #999;
+	background-color: #bbb;
+}
+pre {
+	background-color: #efefef;
+}

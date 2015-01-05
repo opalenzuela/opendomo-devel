@@ -28,9 +28,22 @@ else:
 			data=myfile.read()
 		print """\
 		Content-Type: text/html\n
-		<html><head><link rel='stylesheet' type='text/css' href='/cgi-bin/css.cgi?admin'></head>
+		<html><head>
+		<link rel='stylesheet' type='text/css' href='/cgi-bin/css.cgi?admin'/>
+		<link rel='stylesheet' type='text/css' href='/css/texteditor.css'/>
+		<link rel='stylesheet' type='text/css' href='/css/ascetic.css'/>
+		<script type="text/JavaScript" src='/scripts/vendor/jquery.min.js'></script>
+		<script type='text/JavaScript' src='/scripts/texteditor.js'></script>
+		<script type='text/JavaScript' src='/scripts/vendor/highlight.pack.js'></script>
+		</head>
 		<body>
-		<pre>%s</pre>
+		<pre id='textcontent' contenteditable='true'><code class='bash'>%s</code></pre>
+		<div id='btns'><button id='btnback' onclick='history.back()'>Back</button>
+		<button id='btnsave'>Save</button>
+		<button id='btnhelp'>Help</button>
+		<a href='#'>Next</a>
+		</div>
+		<script>hljs.initHighlightingOnLoad();</script>
 		</body></html>
 		""" % (data,)
 
