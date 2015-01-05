@@ -59,6 +59,7 @@ else
 	echo "actions:"
 	echo "	goback	Back"
 	echo "	installPluginFromGithub.sh	Update"
+	echo "	pushChangesToGithub.sh	Push changes"
 	echo
 	cd $DEVELDIR
 	echo "#> Services"
