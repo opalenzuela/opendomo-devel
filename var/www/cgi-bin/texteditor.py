@@ -42,6 +42,7 @@ else:
 		<link rel='stylesheet' type='text/css' href='/css/solarized_light.css'/>
 		<script type="text/JavaScript" src='/scripts/vendor/jquery.min.js'></script>
 		<script type='text/JavaScript' src='/scripts/texteditor.js'></script>
+		<script type='text/JavaScript' src='/cgi-bin/js.cgi'></script>
 		<script type='text/JavaScript' src='/scripts/vendor/highlight.pack.js'></script>
 		</head>
 		<body>
@@ -55,7 +56,7 @@ else:
 		<script>
 		hljs.initHighlightingOnLoad();
 		</script>
-		<form id='postform' method='POST'>
+		<form action='texteditor.py' id='postform' method='POST'>
 		<input id='postpath' value='%s'><br>
 		<textarea id='posttext'></textarea>
 		</form>

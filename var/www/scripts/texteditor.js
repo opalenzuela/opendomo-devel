@@ -2,7 +2,7 @@ $(function(){
 	$("#btnsave").on("click",function(){
 		var filecontent = $("#textcontent code").text();
 		$("#posttext").val(filecontent);
-		$("#postform").submit();
+		submitForm("postform");
 	});
 	$("#btnhelp").on("click",function(){
 		
