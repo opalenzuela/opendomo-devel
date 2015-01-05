@@ -1,6 +1,7 @@
 $(function(){
 	$("#btnsave").on("click",function(){
-		
+		var filecontent = $("#textcontent code").text();
+		$("#posttext").val(filecontent);
 	});
 	$("#btnhelp").on("click",function(){
 		

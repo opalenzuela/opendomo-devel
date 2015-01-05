@@ -20,5 +20,3 @@ case $extension in
 	
 esac
 echo 
-
-echo

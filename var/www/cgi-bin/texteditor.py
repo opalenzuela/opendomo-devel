@@ -38,16 +38,19 @@ else:
 		</head>
 		<body>
 		<pre id='textcontent' contenteditable='true'><code class='bash'>%s</code></pre>
+		<br/><br/><br/>
 		<div id='btns' class='toolbar'>
 		<button id='btnback' class='button' onclick='history.back()'>Back</button>
 		<button id='btnsave' class='button' >Save</button>
 		<button id='btnhelp' class='button' >Help</button>
-		<a href='#'>Next</a>
 		</div>
 		<script>
-		var path='%s';
 		hljs.initHighlightingOnLoad();
 		</script>
+		<form method='POST'>
+		<input id='postpath' value='%s'>
+		<textarea id='posttext'></textarea>
+		</form>
 		</body></html>
 		""" % (data,filename)
 
