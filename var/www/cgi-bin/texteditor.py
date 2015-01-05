@@ -31,21 +31,25 @@ else:
 		<html><head>
 		<link rel='stylesheet' type='text/css' href='/cgi-bin/css.cgi?admin'/>
 		<link rel='stylesheet' type='text/css' href='/css/texteditor.css'/>
-		<link rel='stylesheet' type='text/css' href='/css/ascetic.css'/>
+		<link rel='stylesheet' type='text/css' href='/css/solarized_light.css'/>
 		<script type="text/JavaScript" src='/scripts/vendor/jquery.min.js'></script>
 		<script type='text/JavaScript' src='/scripts/texteditor.js'></script>
 		<script type='text/JavaScript' src='/scripts/vendor/highlight.pack.js'></script>
 		</head>
 		<body>
 		<pre id='textcontent' contenteditable='true'><code class='bash'>%s</code></pre>
-		<div id='btns'><button id='btnback' onclick='history.back()'>Back</button>
-		<button id='btnsave'>Save</button>
-		<button id='btnhelp'>Help</button>
+		<div id='btns' class='toolbar'>
+		<button id='btnback' class='button' onclick='history.back()'>Back</button>
+		<button id='btnsave' class='button' >Save</button>
+		<button id='btnhelp' class='button' >Help</button>
 		<a href='#'>Next</a>
 		</div>
-		<script>hljs.initHighlightingOnLoad();</script>
+		<script>
+		var path='%s';
+		hljs.initHighlightingOnLoad();
+		</script>
 		</body></html>
-		""" % (data,)
+		""" % (data,filename)
 
 	except IOError:
 		message = 'Invalid file'

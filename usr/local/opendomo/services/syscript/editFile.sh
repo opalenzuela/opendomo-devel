@@ -12,13 +12,13 @@ echo "	fullpath	Filename	readonly	$1"
 case $extension in
 	jpeg|jpg|png|gif)
 		echo "	filecontent	File contents 	application	/cgi-bin/displayfile.cgi?$1"
+		echo "actions:"
+		echo "	goback	Back"
 		;;
 	*)
 		echo "	filecontent	File contents 	application	/cgi-bin/texteditor.py?fname=$1"
 	
 esac
-echo "actions:"
-echo "	goback	Back"
 echo 
 
 echo
