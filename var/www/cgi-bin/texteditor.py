@@ -12,7 +12,15 @@ except ImportError:
 form = cgi.FieldStorage()
 
 if "fname" not in form:
-	message = 'Invalid format'
+	if "postpath" not in form:
+		message = 'Invalid format'
+	else:
+		filename = form.getvalue("postpath")
+		message = 'Saving data'
+		with open ("/var/opendomo/tmp/" + filename, "r") as myfile:
+			filecontents = form.getvalue("posttext")
+			data=myfile.write(filecontents)
+			
 	print """\
 	Content-Type: text/html\n
 	<html><head><link rel='stylesheet' type='text/css' href='/cgi-bin/css.cgi?admin'></head>
@@ -38,7 +46,7 @@ else:
 		</head>
 		<body>
 		<pre id='textcontent' contenteditable='true'><code class='bash'>%s</code></pre>
-		<br/><br/><br/>
+		<br/><br/>
 		<div id='btns' class='toolbar'>
 		<button id='btnback' class='button' onclick='history.back()'>Back</button>
 		<button id='btnsave' class='button' >Save</button>
@@ -47,8 +55,8 @@ else:
 		<script>
 		hljs.initHighlightingOnLoad();
 		</script>
-		<form method='POST'>
-		<input id='postpath' value='%s'>
+		<form id='postform' method='POST'>
+		<input id='postpath' value='%s'><br>
 		<textarea id='posttext'></textarea>
 		</form>
 		</body></html>
