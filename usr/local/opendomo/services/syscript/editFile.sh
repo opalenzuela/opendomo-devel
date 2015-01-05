@@ -28,6 +28,8 @@ case $extension in
 		;;
 	*)
 		echo "	filecontent	File contents 	application	/cgi-bin/texteditor.py?fname=$1"
+		echo "actions:"
+		echo
 		;;
 esac
 echo 

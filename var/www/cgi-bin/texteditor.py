@@ -55,7 +55,7 @@ else:
 		<script>
 		hljs.initHighlightingOnLoad();
 		</script>
-		<form action='texteditor.py' id='postform' method='POST' style='visibility:none;'>
+		<form action='texteditor.py' id='postform' method='POST' style='visibility:hidden;display:none;'>
 		<input name='postpath' id='postpath' value='%s'><br>
 		<textarea name='posttext' id='posttext'></textarea>
 		</form>
