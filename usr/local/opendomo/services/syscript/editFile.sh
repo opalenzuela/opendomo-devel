@@ -14,7 +14,7 @@ fi
 
 echo "#>Editing file"
 echo "form:editFile.sh"
-echo "	fullpath	Filename	readonly	$1"
+echo "	fullpath	Filename	hidden	$1"
 case $extension in
 	jpeg|jpg|png|gif)
 		bname=`basename $1`
@@ -24,9 +24,10 @@ case $extension in
 		echo "	realfile	Upload file	file	$bname"
 		echo "actions:"
 		echo "	goback	Back"
+		echo "	editFile.sh	Save changes"
 		;;
 	*)
 		echo "	filecontent	File contents 	application	/cgi-bin/texteditor.py?fname=$1"
-	
+		;;
 esac
 echo 

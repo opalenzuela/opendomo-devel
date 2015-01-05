@@ -1,5 +1,4 @@
 $(function(){
-	("div.toolbar").hide(); // No need for complementary toolbar
 	$("#btnsave").on("click",function(){
 		var filecontent = $("#textcontent code").text();
 		$("#posttext").val(filecontent);

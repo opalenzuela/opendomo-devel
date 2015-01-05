@@ -51,12 +51,11 @@ else:
 		<div id='btns' class='toolbar'>
 		<button id='btnback' class='button' onclick='history.back()'>Back</button>
 		<button id='btnsave' class='button' >Save</button>
-		<button id='btnhelp' class='button' >Help</button>
 		</div>
 		<script>
 		hljs.initHighlightingOnLoad();
 		</script>
-		<form action='texteditor.py' id='postform' method='POST'>
+		<form action='texteditor.py' id='postform' method='POST' style='visibility:none;'>
 		<input name='postpath' id='postpath' value='%s'><br>
 		<textarea name='posttext' id='posttext'></textarea>
 		</form>
