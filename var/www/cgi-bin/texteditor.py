@@ -17,7 +17,7 @@ if "fname" not in form:
 	else:
 		filename = form.getvalue("postpath")
 		message = 'Saving data'
-		with open ("/var/opendomo/tmp/" + filename, "r") as myfile:
+		with open ("/var/opendomo/tmp/" + filename, "w") as myfile:
 			filecontents = form.getvalue("posttext")
 			data=myfile.write(filecontents)
 			

@@ -3,6 +3,7 @@ $(function(){
 		var filecontent = $("#textcontent code").text();
 		$("#posttext").val(filecontent);
 		submitForm("postform");
+		
 	});
 	$("#btnhelp").on("click",function(){
 		
