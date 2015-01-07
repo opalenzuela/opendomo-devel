@@ -6,15 +6,17 @@
 # Copyright(c) 2015 OpenDomo Services SL. Licensed under GPL v3 or later
 
 TMPDIR="/var/opendomo/tmp"
-GITPROJ="$1"
-DESCRIPTION="$2"
+AUTHORID="$1"
+GITPROJ="$2"
+DESCRIPTION="$3"
 LOGDIR="/var/opendomo/log"
 
-if test -z "$2"
+if test -z "$3"
 then
     echo "form:pushChangesToGithub.sh"
-	echo "	repo	Repository	text	$1"
-	echo "	comments	Comments	text	$2"
+	echo "	owner	Owner	text	$1"
+	echo "	repo	Repository	text	$2"
+	echo "	comments	Comments	text	$3"
     echo
     exit 1
 fi
