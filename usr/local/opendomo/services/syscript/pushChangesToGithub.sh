@@ -19,7 +19,7 @@ then
 	echo "	repo	Repository	text	$2"
 	echo "	comments	Comments	text	$3"
     echo
-    exit 1
+    exit 0
 fi
 
 
