@@ -13,6 +13,7 @@ LOGDIR="/var/opendomo/log"
 
 if test -z "$3"
 then
+	echo "#> Push changes"
     echo "form:pushChangesToGithub.sh"
 	echo "	owner	Owner	text	$1"
 	echo "	repo	Repository	text	$2"
@@ -43,10 +44,18 @@ source $INFOFILE
 # Last: commit changes 
 if test -x /usr/bin/git
 then
+	EMAIL=`cat /home/$USER/.email`
+	git config --global user.name $USER
+	git config --global user.email $EMAIL
 	git commit -a -m "$DESCRIPTION"
 	if git push https://$USERNAME:$PASSWORD@github.com/$AUTHORID/$REPOSITORY.git master
 	then
+		echo "#> Push changes"
+		echo "form:viewProjects.sh"
+		echo "	projectid	projectid	hidden	$GITPROJ"
 		echo "#INFO Changes successfully uploaded"
+		echo "actions:"
+		echo "	viewProjects.sh	Back"
 		echo
 	fi
 else
