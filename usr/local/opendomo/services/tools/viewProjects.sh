@@ -46,7 +46,17 @@ if test -z "$1"; then
 else
 	echo "#>Details"
 	echo "form:viewProjects.sh"
-	cd $DEVELDIR/$1
+	
+	PROJECT="$1"
+	if ! test -d $DEVELDIR/$PROJECT
+	then
+		AUTHORID=`echo $1 | cut -f1 -d:`
+		REPOSITORY=`echo $1 | cut -f2 -d:`
+		/usr/local/opendomo/installPluginFromGithub.sh $AUTHORID $REPOSITORY >/dev/null
+		PROJECT="$REPOSITORY"
+	fi
+	
+	cd $DEVELDIR/$PROJECT
 	INFOFILE=`ls ./var/opendomo/plugins/*.info`
 	CODENAME=`basename $INFOFILE | cut -f1 -d.`
 	DEPENDENCES=`cat ./var/opendomo/plugins/$CODENAME.deps` 
