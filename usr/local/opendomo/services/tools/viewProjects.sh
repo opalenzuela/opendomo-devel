@@ -5,6 +5,10 @@
 # Copyright(c) 2015 OpenDomo Services SL. Licensed under GPL v3 or later
 
 ## This service will let the developer choose which projects are available.
+##
+## In order to import the development version of an installed plugin, is 
+## necessary to have all the requested variables in the info file. These
+## variables are AUTHORID and REPOSITORY.
 
 DEVELDIR="/var/opendomo/tmp"
 echo "#>Development plugins installed"
