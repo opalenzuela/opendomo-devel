@@ -62,7 +62,7 @@ else
 	DEPENDENCES=`cat ./var/opendomo/plugins/$CODENAME.deps` 
 	source $INFOFILE
 	echo "	owner	owner	hidden	$AUTHORID"
-	echo "	dir 	Directory	hidden	$1"
+	echo "	dir 	Directory	hidden	$PROJECT"
 	echo "	desc	Description	readonly	$DESCRIPTION"
 	echo "	auth	Author	readonly	$AUTHOR"
 	echo "	deps	Dependences 	readonly	$DEPENDENCES"
@@ -74,7 +74,7 @@ else
 	cd $DEVELDIR
 	echo "#> Services"
 	echo "list:editFile.sh	detailed foldable"
-	for serv in `find ./$1/usr/local/opendomo/services -type f`; do
+	for serv in `find ./$PROJECT/usr/local/opendomo/services -type f`; do
 		desc=`head $serv -n4 | grep desc: | cut -f2 -d:`
 		package=`head $serv -n4 | grep package: | cut -f2 -d:`
 		bname=`basename $serv`
@@ -90,7 +90,7 @@ else
 	
 	echo "#> Daemons"
 	echo "list:editFile.sh	detailed foldable"
-	for serv in `find ./$1/usr/local/opendomo/daemons -type f`; do
+	for serv in `find ./$PROJECT/usr/local/opendomo/daemons -type f`; do
 		desc=`head $serv -n4 | grep Short-Description | cut -f2 -d:`
 		bname=`basename $serv`
 		if grep -q start $serv && grep -q stop $serv && grep -q status $serv 
@@ -104,7 +104,7 @@ else
 	
 	echo "#> Other files"
 	echo "list:editFile.sh	detailed foldable"
-	for serv in `find ./$1/var/www -type f`; do
+	for serv in `find ./$PROJECT/var/www -type f`; do
 		extension=${serv##*.}
 		bname=`basename $serv`
 		echo "	-$serv	$bname	$extension file	$extension"
