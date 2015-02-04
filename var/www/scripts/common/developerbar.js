@@ -14,7 +14,9 @@ jQuery(function($) {
 });
 
 function makeawish() {
-	openPopup('https://github.com/opalenzuela/opendomo/issues/new?title=Name+your+wish&body=(describe+your+wish)&labels=wish');
+	var bugtracker="https://github.com/opalenzuela/opendomo"
+	if (typeof repositoryURL == "string")  bugtracker = repositoryURL;	
+	openPopup(bugtracker + '/issues/new?title=Name+your+wish&body=(describe+your+wish)&labels=wish');
 }
 
 var debugvisible = false;
@@ -59,5 +61,7 @@ function translateMe(tag){
 }
 
 function notifyProblem(){
-	openPopup('https://github.com/opalenzuela/opendomo/issues/new?title=Problem+in+'+basename(location.pathname) + '&body=There+was+a+problem+in+script+'+basename(location.pathname));
+	var bugtracker="https://github.com/opalenzuela/opendomo"
+	if (typeof repositoryURL == "string")  bugtracker = repositoryURL;
+	openPopup(bugtracker + '/issues/new?title=Problem+in+'+basename(location.pathname) + '&body=There+was+a+problem+in+script+'+basename(location.pathname));
 }
