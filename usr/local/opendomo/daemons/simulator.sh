@@ -7,10 +7,10 @@
 # Default-Start:     1 2 3 4 5
 # Default-Stop:      0 6
 # Short-Description: Simulator
-# Description:       Simulator
+# Description:       Simulate several hardware devices
 #
 ### END INIT INFO
-### Copyright(c) 2014 OpenDomo Services SL. Licensed under GPL v3 or later
+### Copyright(c) 2015 OpenDomo Services SL. Licensed under GPL v3 or later
 
 . /lib/lsb/init-functions
 PIDFILE="/var/opendomo/run/simulator.pid"
@@ -37,7 +37,7 @@ do_start () {
 		echo 'URL=http://127.0.0.1/data/
 TYPE="odenergy"
 REFRESH=10
-USER=""
+USERNAME=""
 PASS=""
 DEVNAME="odenergydemo"' > /etc/opendomo/control/odenergydemo.conf
 		
@@ -45,7 +45,7 @@ DEVNAME="odenergydemo"' > /etc/opendomo/control/odenergydemo.conf
 		echo 'URL=http://127.0.0.1/cgi-bin/odcontrol2.cgi/
 TYPE="odcontrol2"
 REFRESH=10
-USER=""
+USERNAME=""
 PASS=""
 DEVNAME="odcontroldemo"' > /etc/opendomo/control/odcontroldemo.conf	
 	
@@ -54,7 +54,7 @@ DEVNAME="odcontroldemo"' > /etc/opendomo/control/odcontroldemo.conf
 		echo 'URL=http://127.0.0.1/cgi-bin
 TYPE="foscam"
 REFRESH=10
-USER=""
+USERNAME=""
 PASS=""
 DEVNAME="foscamdemo"' > /etc/opendomo/control/foscamdemo.conf	
 		
