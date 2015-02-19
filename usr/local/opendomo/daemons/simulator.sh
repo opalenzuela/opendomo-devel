@@ -34,7 +34,7 @@ do_start () {
 		test -d /etc/opendomo/vision || mkdir -p /etc/opendomo/vision
 		
 		# 1. Simulate a ODEnergy device:
-		echo 'URL=http://127.0.0.1/data/
+		echo 'URL="http://127.0.0.1/cgi-bin/odenergy.cgi/"
 TYPE="odenergy"
 REFRESH=10
 USERNAME=""
@@ -42,7 +42,7 @@ PASS=""
 DEVNAME="odenergydemo"' > /etc/opendomo/control/odenergydemo.conf
 		
 		# 2. Simulate a ODControl device:
-		echo 'URL=http://127.0.0.1/cgi-bin/odcontrol2.cgi/
+		echo 'URL="http://127.0.0.1/cgi-bin/odcontrol2.cgi/"
 TYPE="odcontrol2"
 REFRESH=10
 USERNAME=""
