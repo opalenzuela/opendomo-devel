@@ -54,6 +54,8 @@ else
 	PROJECT="$1"
 	if ! test -d $DEVELDIR/$PROJECT
 	then
+		echo "#LOADING Installing plugin"
+		echo
 		AUTHORID=`echo $1 | cut -f1 -d:`
 		REPOSITORY=`echo $1 | cut -f2 -d:`
 		/usr/local/opendomo/installPluginFromGithub.sh $AUTHORID $REPOSITORY >/dev/null
