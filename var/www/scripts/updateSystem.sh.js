@@ -1,10 +1,6 @@
 var repositoryURL="https://github.com/opalenzuela/opendomo-devel/";
-$(function(){
-	/*if ($("form").length==0) {   // it is not the image view page
-		$("div.toolbar").hide(); // No need for complementary toolbar
-	} */
-	setTimeout(checkIfUpdated,5000); // First wait for 5 seconds
-});
+
+setTimeout(checkIfUpdated,1000); // First wait for 1 second
 
 function checkIfUpdated() {
 	var url = "/data/status.json";
@@ -13,12 +9,17 @@ function checkIfUpdated() {
 	$.post(url)
 	.done(function(data) {
 		try {
-			if ((typeof data == "object") && (data.status == "active")) {
-				console.log( "success" );
-				window.location.replace("/cgi-bin/od.cgi/control/");
-			} else {
-				console.log( "not ready yet: " + data );
-				setTimeout(checkIfUpdated,1000); // Then check every second 			
+			if (typeof data == "object") {
+				switch (data.status) {
+					case "active":
+						console.log( "success" );
+						window.location.replace("/cgi-bin/od.cgi/control/");					
+						break;
+					default:
+						console.log( "not ready yet: " + data.status );
+						setTimeout(checkIfUpdated,1000); // Then check every second 							
+						break;
+				}
 			}
 		} catch (e) {
 			setTimeout(checkIfUpdated,1000); // Check again later

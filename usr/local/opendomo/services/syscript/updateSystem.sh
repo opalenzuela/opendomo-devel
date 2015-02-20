@@ -7,9 +7,9 @@
 
 ODAPTPID=/var/opendomo/run/opendomo-apt.pid
 
+echo "list:updateSystem.sh"
 if grep Spaceless $ODAPTPID &>/dev/null 
 then
-	echo "list:updateSystem.sh"
 	echo "#WARN No free space available, you need to save configuration and reboot to continue"
 	echo "actions:"
 	echo "	saveConfig.sh	Save configuration"
