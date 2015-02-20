@@ -1,0 +1,13 @@
+#updateSystem_frm {
+	height: 300px;
+	background-position: bottom center;
+	background-repeat: no-repeat;
+}
+#updateSystem_frm.idle,
+#updateSystem_frm.busy
+{
+	background-image: url("/images/update.png");
+}
+#updateSystem_frm.active{
+	background-image: url("/images/installed.png");
+}

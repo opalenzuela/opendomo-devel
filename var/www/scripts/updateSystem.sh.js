@@ -13,12 +13,15 @@ function checkIfUpdated() {
 				switch (data.status) {
 					case "active":
 						console.log( "success" );
-						window.location.replace("/cgi-bin/od.cgi/control/");					
+						setTimeout(function(){
+							window.location.replace("/cgi-bin/od.cgi/control/");					
+						},1000);
 						break;
 					default:
 						console.log( "not ready yet: " + data.status );
 						setTimeout(checkIfUpdated,1000); // Then check every second 							
 						break;
+					$("#updateSystem_frm")[0].className = data.status;						
 				}
 			}
 		} catch (e) {
