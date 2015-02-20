@@ -18,15 +18,15 @@ function checkIfUpdated() {
 				window.location.replace("/cgi-bin/od.cgi/control/");
 			} else {
 				console.log( "not ready yet: " + data );
-				setTimeout(checkIfRestarted,1000); // Then check every second 			
+				setTimeout(checkIfUpdated,1000); // Then check every second 			
 			}
 		} catch (e) {
-			setTimeout(checkIfRestarted,1000); // Check again later
+			setTimeout(checkIfUpdated,1000); // Check again later
 		}
 	})
 	.fail(function(data) {
 		// JSON does not exist yet or connection is not available
 		console.log( "failed" );
-		setTimeout(checkIfRestarted,1000); // Then check every second 
+		setTimeout(checkIfUpdated,1000); // Then check every second 
 	});
 }
