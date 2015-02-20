@@ -21,8 +21,8 @@ function checkIfUpdated() {
 						console.log( "not ready yet: " + data.status );
 						setTimeout(checkIfUpdated,1000); // Then check every second 							
 						break;
-					$("#updateSystem_frm")[0].className = data.status;						
 				}
+				$("#updateSystem_frm")[0].className = data.status;			
 			}
 		} catch (e) {
 			setTimeout(checkIfUpdated,1000); // Check again later
