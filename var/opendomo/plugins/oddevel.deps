@@ -1,1 +1,1 @@
-python ca-certificates curl git
+python ca-certificates curl git miniupnpc
