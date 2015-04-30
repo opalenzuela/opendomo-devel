@@ -53,7 +53,7 @@ DEVNAME="odcontroldemo"' > /etc/opendomo/control/odcontroldemo.conf
 		# 3. Simulate a IP camera
 		echo 'URL=http://127.0.0.1/cgi-bin
 TYPE="foscam"
-REFRESH=10
+REFRESH=1
 USERNAME=""
 PASS=""
 DEVNAME="foscamdemo"' > /etc/opendomo/control/foscamdemo.conf	
