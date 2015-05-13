@@ -48,15 +48,18 @@ if test -z "$1"; then
 		fi
 	done
 else
-	echo "#>Details"
 	PROJECT="$1"
 	if ! test -d $DEVELDIR/$PROJECT
 	then
 		AUTHORID=`echo $1 | cut -f1 -d:`
 		REPOSITORY=`echo $1 | cut -f2 -d:`
+		echo "#>Install plugin from Github"
 		echo "form:installPluginFromGithub.sh"
 		echo "	user	User	text	$AUTHORID"
 		echo "	project	Project	text	$REPOSITORY" 
+		echo "actions:"
+		echo "	goback	Back"
+		echo "	installPluginFromGithub.sh	Install"		
 		#echo "#LOADING Installing plugin"
 		#echo
 
@@ -65,6 +68,7 @@ else
 		exit 0
 	fi
 
+	echo "#>Details"
 	echo "form:viewProjects.sh"	
 	cd $DEVELDIR/$PROJECT
 	INFOFILE=`ls ./var/opendomo/plugins/*.info`
