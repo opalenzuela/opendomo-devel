@@ -11,8 +11,9 @@
 ## variables are AUTHORID and REPOSITORY.
 
 DEVELDIR="/var/opendomo/tmp"
-echo "#>Development plugins installed"
+
 if test -z "$1"; then
+	echo "#>Development plugins installed"
 	echo "list:viewProjects.sh	detailed"
 	cd $DEVELDIR
 	for project in *; do
