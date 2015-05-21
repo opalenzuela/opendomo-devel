@@ -17,7 +17,7 @@ if test -z "$1"; then
 	echo "list:viewProjects.sh	detailed"
 	cd $DEVELDIR
 	for project in *; do
-		if test -d $project && test -f ./$project/build.bat
+		if test -d "$project" && test -f ./$project/build.bat
 		then
 			found=1
 			echo "	-$project	$project 	project"
@@ -84,7 +84,7 @@ else
 	echo "actions:"
 	echo "	goback	Back"
 	echo "	installPluginFromGithub.sh	Update"
-	echo "	removeDevelopmentProject.sh Remove"
+	echo "	removeDevelopmentProject.sh	Remove"
 	echo "	pushChangesToGithub.sh	Push changes"
 	echo
 	cd $DEVELDIR
