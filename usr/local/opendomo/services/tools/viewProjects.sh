@@ -83,6 +83,7 @@ else
 	echo "actions:"
 	echo "	goback	Back"
 	echo "	installPluginFromGithub.sh	Update"
+	echo "	removeDevelopmentProject.sh Remove"
 	echo "	pushChangesToGithub.sh	Push changes"
 	echo
 	cd $DEVELDIR
