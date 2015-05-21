@@ -13,6 +13,8 @@ then
 	echo "form:`basename $0`"
 	echo "	user	User	text	$1"
 	echo "	project	Project	text	$2" 
+	echo "actions:"
+	echo "	goback	Back"	
 else
 	cd $TMPDIR 
 	cd "$2/var/opendomo/plugins/"
@@ -20,11 +22,12 @@ else
 	if test -f /var/opendomo/plugins/$PLUGINID.version
 	then
 		echo "00000000" > /var/opendomo/plugins/$PLUGINID.version
+		cd /$TMPDIR
+		rm -fr "$2"
 		echo "#INFO Plugin [$PLUGINID] restored"
 	else
 		echo "#ERRO The plugin [$PLUGINID] was not found"
 	fi
+	/usr/local/opendomo/viewProjects.sh
 fi
-echo "actions:"
-echo "	goback	Back"
 echo
