@@ -12,6 +12,9 @@ then
 	echo "	user	User	text	$1"
 	echo "	project	Project	text	$2" 
 	echo "#TIP If you have a project created in Github, you just need to enter the project name and your user"
+	echo "actions:"
+	echo "	goback	Back"
+	echo "	installPluginFromGithub.sh	Install"	
 else
 	echo "#LOADING Installing plugin"
 	echo
@@ -21,8 +24,6 @@ else
 	else
 		echo "#ERRO The plugin was not found"
 	fi
+	/usr/local/opendomo/viewProjects.sh
 fi
-echo "actions:"
-echo "	goback	Back"
-echo "	installPluginFromGithub.sh	Install"
 echo
