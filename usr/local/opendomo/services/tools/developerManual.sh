@@ -9,16 +9,18 @@
 echo "#>Developer manual"
 if test -z "$1"; then
 	echo "list:developerManual.sh	detailed filterable"
+	echo "#LOADING Loading ..."
 	cd /usr/local/opendomo/
 	for filename in *.sh; do
 		name=`echo $filename | cut -f1 -d.`
-		echo "	-$name	$name 	chapter	$filename"
+		desc=`head -n5 $filename | grep '#desc' | cut -f2- -d:`
+		echo "	-$name	$name 	chapter	$desc"
 	done
 	echo "	-intro	Introduction	chapter"
 else
 	echo "list:developerManual.sh"
 	if grep -q '^##' /usr/local/opendomo/$1.sh; then
-		grep '^##' /usr/local/opendomo/$1.sh | sed '/##/# /'
+		grep '^##' /usr/local/opendomo/$1.sh | sed 's/##/# /'
 		#':a;N;$!ba;s/\n/ /g'
 	else
 		echo "#WARN This file is not documented"
