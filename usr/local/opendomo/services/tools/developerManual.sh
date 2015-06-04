@@ -12,13 +12,17 @@ if test -z "$1"; then
 	cd /usr/local/opendomo/docs
 	for filename in *.txt; do
 		name=`echo $filename | cut -f1 -d.`
-		echo "	-$name	$name 	chapter"
+		echo "	-$name	$name 	chapter	$filename"
 	done
 	echo "	-intro	Introduction	chapter"
 else
 	echo "list:developerManual.sh"
-	grep '^##' /usr/local/opendomo/$1.sh | sed '/##/# /'
-	#':a;N;$!ba;s/\n/ /g'
+	if grep -q '^##' /usr/local/opendomo/$1.sh; then
+		grep '^##' /usr/local/opendomo/$1.sh | sed '/##/# /'
+		#':a;N;$!ba;s/\n/ /g'
+	else
+		echo "#WARN This file is not documented"
+	fi
 	echo "actions:"
 	echo "	goback	Back"
 fi
